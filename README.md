@@ -18,7 +18,8 @@ Develop a Bank REST API using Node.js, with the following functionalities
 * Withdrawal supports a $200 overdraft (balance, can be down to -$200).
 * Transfers don’t support overdrafts (can’t leave the balance below 0).
 * Add the validations and errors you see necessary.
-* The Account entity is not the main focus of the exercise, so only add/model what’s needed for the functionalities above.
+* The Account entity is not the main focus of the exercise, so only add what’s needed for the functionalities above.
+* The code provided is a boilerplate to save you some time. Feel free to change it as you see fit
 
 `When in doubt, don’t get blocked. Fill in the gaps and just write down in a Readme file whatever considerations or design decisions you had to make.`
 
@@ -26,6 +27,7 @@ Develop a Bank REST API using Node.js, with the following functionalities
 * Testing Strategy
 * Effective Architectural decisions
 * Effective response/error handling
+* Simple design
 * GIT
 * Straightforward setup and execution
 ## The Extra Mile
