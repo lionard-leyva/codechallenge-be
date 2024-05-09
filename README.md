@@ -21,15 +21,21 @@ Develop a Bank REST API using Node.js, with the following functionalities
 * The Account entity is not the main focus of the exercise, so only add what’s needed for the functionalities above.
 * The code provided is a boilerplate to save you some time. Feel free to change it as you see fit
 
-`When in doubt, don’t get blocked. Fill in the gaps and just write down in a Readme file whatever considerations or design decisions you had to make.`
-
 ## What we value
 * Testing Strategy
+  * Provide the right amount of unit/integration/end-to-end tests following the testing pyramid or any principle you choose.
 * Effective Architectural decisions
+  * Separating business rules from infrastructure details, either by Clean Architecture or other paradigm.
 * Effective response/error handling
 * Simple design
-* GIT
+  * SOLID
+  * KISS
+  * DRY
 * Straightforward setup and execution
+
+  | :memo: | We understand that all decisions in Engineering are tradeoffs, so please include a readme with your decision-making process. |
+  |--------|:-----------------------------------------------------------------------------------------------------------------------------|
+
 ## The Extra Mile
 * Database management
 * Docker
