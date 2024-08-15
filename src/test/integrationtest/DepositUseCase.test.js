@@ -1,4 +1,3 @@
-
 const DepositUseCase = require('../../../src/app/application/useCases/DepositUseCase');
 const InMemoryAccountRepository = require('../../../src/app/infraestructure/repository/InMemoryAccountRepository.js');
 
@@ -13,9 +12,7 @@ describe('DepositUseCase Integration', () => {
 
     it('should deposit money into an account', async () => {
         await accountRepository.createAccount('123', 1000);
-
         await depositUseCase.execute('123', 500);
-
         const account = await accountRepository.getAccountById('123');
         expect(account.balance).toBe(1500);
     });
@@ -31,10 +28,18 @@ describe('DepositUseCase Integration', () => {
         await expect(depositUseCase.execute('123', -500))
             .rejects.toThrow('Deposit amount must be positive');
     });
-
     it('should not allow deposits exceeding daily limit', async () => {
         await accountRepository.createAccount('123', 1000);
-
+        const firstDepositResult = await depositUseCase.execute('123', 4000);
+        console.log('After first deposit:', JSON.stringify(firstDepositResult));
+        await expect(depositUseCase.execute('123', 1001)).rejects.toThrow('Daily deposit limit exceeded');
+        const finalAccount = await accountRepository.getAccountById('123');
+        console.log('Final account state:', JSON.stringify(finalAccount));
+        expect(finalAccount.balance).toBe(5000);
+        expect(finalAccount.dailyDeposits).toBe(4000);
+    });
+    it('should not allow deposits exceeding daily limit', async () => {
+        await accountRepository.createAccount('123', 1000);
         await depositUseCase.execute('123', 4000);
         await expect(depositUseCase.execute('123', 1001))
             .rejects.toThrow('Daily deposit limit exceeded');
