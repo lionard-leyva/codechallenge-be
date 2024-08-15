@@ -7,11 +7,17 @@ class InMemoryAccountRepository {
     async getAccountById(id) {
         const accountData = this.accounts.get(id);
         if (!accountData) return null;
-        return new Account(accountData.id, accountData.balance);
+        const account = new Account(accountData.id, accountData.balance);
+        account.dailyDeposits = accountData.dailyDeposits;
+        return account;
     }
 
     async save(account) {
-        this.accounts.set(account.id, account);
+        this.accounts.set(account.id, {
+            id: account.id,
+            balance: account.balance,
+            dailyDeposits: account.dailyDeposits
+        });
     }
 
     async createAccount(id, initialBalance = 0) {

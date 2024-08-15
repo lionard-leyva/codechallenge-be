@@ -8,7 +8,9 @@ class DepositUseCase {
         if (!account) {
             throw new Error('Account not found');
         }
+        console.log('Before deposit:', JSON.stringify(account));
         account.deposit(amount);
+        console.log('After deposit:', JSON.stringify(account));
         await this.accountRepository.save(account);
         return account;
     }

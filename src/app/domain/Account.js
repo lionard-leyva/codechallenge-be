@@ -6,6 +6,10 @@ class Account {
     }
 
     deposit(amount) {
+        if (isNaN(this.dailyDeposits)) {
+            this.dailyDeposits = 0;
+        }
+        console.log('Depositing:', amount, 'Current dailyDeposits:', this.dailyDeposits);
         if (amount <= 0) {
             throw new Error('Deposit amount must be positive');
         }
@@ -14,6 +18,8 @@ class Account {
         }
         this.balance += amount;
         this.dailyDeposits += amount;
+
+        console.log('After deposit - Balance:', this.balance, 'DailyDeposits:', this.dailyDeposits);
     }
 
     resetDailyDeposits() {
@@ -46,4 +52,5 @@ class Account {
         return this.balance;
     }
 }
+
 module.exports = Account;
