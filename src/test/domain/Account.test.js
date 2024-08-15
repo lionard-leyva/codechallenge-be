@@ -1,4 +1,4 @@
-const Account = require('../../../src/app/domain.entities/Account');
+const Account = require('../../app/domain/Account');
 
 describe('Account', () => {
     describe('deposit', () => {

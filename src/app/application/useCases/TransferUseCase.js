@@ -2,25 +2,23 @@ class TransferUseCase {
     constructor(accountRepository) {
         this.accountRepository = accountRepository;
     }
+
     async execute(fromAccountId, toAccountId, amount) {
         const fromAccount = await this.accountRepository.getAccountById(fromAccountId);
+        const toAccount = await this.accountRepository.getAccountById(toAccountId);
+        console.log('FromAccount:', fromAccount);
+        console.log('ToAccount:', toAccount);
         if (!fromAccount) {
             throw new Error('Source account not found');
         }
-
-        const toAccount = await this.accountRepository.getAccountById(toAccountId);
         if (!toAccount) {
             throw new Error('Destination account not found');
         }
+        fromAccount.transfer(amount, toAccount);
 
-        try {
-            fromAccount.transfer(amount, toAccount);
-            await this.accountRepository.save(fromAccount);
-            await this.accountRepository.save(toAccount);
-            return { fromAccount, toAccount };
-        } catch (error) {
-            throw error;
-        }
+        await this.accountRepository.save(fromAccount);
+        await this.accountRepository.save(toAccount);
+        return {fromAccount, toAccount};
     }
 }
 
