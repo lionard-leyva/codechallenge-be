@@ -1,7 +1,12 @@
-const Account =  require('../../domain/Account');
+"use strict";
+
+const Account = require('../../domain/Account');
+
 class InMemoryAccountRepository {
     constructor() {
         this.accounts = new Map();
+        this.createAccount('123', 1000);
+        this.createAccount('456', 500);
     }
 
     async getAccountById(id) {
@@ -16,13 +21,17 @@ class InMemoryAccountRepository {
         this.accounts.set(account.id, {
             id: account.id,
             balance: account.balance,
-            dailyDeposits: account.dailyDeposits
+            dailyDeposits: account.dailyDeposits || 0
         });
     }
 
     async createAccount(id, initialBalance = 0) {
-        const account = { id, balance: initialBalance };
-        await this.save(account);
+        const account = new Account(id, initialBalance);
+        this.accounts.set(id, {
+            id: account.id,
+            balance: account.balance,
+            dailyDeposits: 0
+        });
         return account;
     }
 }
