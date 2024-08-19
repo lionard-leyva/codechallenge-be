@@ -1,5 +1,14 @@
 {
   "compilerOptions": {
+    "target": "es2017",
+    "allowJs": true,           // Permite importar archivos .js
+    "checkJs": false,          // No hace un chequeo de tipos en archivos .js
+    "esModuleInterop": true,   // Permite importaciones de módulos CommonJS
+    "resolveJsonModule": true, // Permite importar archivos .json
+    "outDir": "./dist",        // Directorio de salida para los archivos compilados
+    "module": "commonjs",      // Sistema de módulos
+    "strict": true,            // Activa todas las verificaciones de estrictas
+    "baseUrl": "./src" ,        // Base URL para importaciones relativas
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Projects */
@@ -105,5 +114,10 @@
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
-  }
+  },
+  "include": [
+    "src/**/*.ts",             // Incluye todos los archivos TypeScript
+    "src/**/*.js"              // Incluye todos los archivos JavaScript
+  ],
+  "exclude": ["node_modules"]
 }
