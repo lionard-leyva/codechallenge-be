@@ -18,7 +18,7 @@ describe('DepositUseCase Integration', () => {
     });
 
     it('should throw an error if account does not exist', async () => {
-        await expect(depositUseCase.execute('456', 500))
+        await expect(depositUseCase.execute('111', 500))
             .rejects.toThrow('Account not found');
     });
 

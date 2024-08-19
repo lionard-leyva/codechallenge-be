@@ -18,7 +18,7 @@ describe('WithdrawUseCase Integration', () => {
     });
 
     it('should throw an error if account does not exist', async () => {
-        await expect(withdrawUseCase.execute('456', 500))
+        await expect(withdrawUseCase.execute('844', 500))
             .rejects.toThrow('Account not found');
     });
 

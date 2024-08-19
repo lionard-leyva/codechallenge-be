@@ -34,14 +34,14 @@ describe('TransferUseCase Integration', () => {
     });
 
     it('should throw an error if source account does not exist', async () => {
-        await accountRepository.createAccount('456', 500);
-        await expect(transferUseCase.execute('123', '456', 100))
+        await accountRepository.createAccount('888', 500);
+        await expect(transferUseCase.execute('222', '888', 100))
             .rejects.toThrow('Source account not found');
     });
 
     it('should throw an error if destination account does not exist', async () => {
-        await accountRepository.createAccount('123', 1000);
-        await expect(transferUseCase.execute('123', '456', 100))
+        await accountRepository.createAccount('222', 1000);
+        await expect(transferUseCase.execute('222', '543', 100))
             .rejects.toThrow('Destination account not found');
     });
 });

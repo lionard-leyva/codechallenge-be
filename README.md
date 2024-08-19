@@ -39,5 +39,51 @@ Develop a Bank REST API using Node.js, with the following functionalities
 ## The Extra Mile
 * Database management
 * Docker
+# Lionard Leyva Solutions
 
-Inspired by [Bank Kata](https://github.com/sandromancuso/Bank-kata)
+## Bank Account API
+
+Este proyecto implementa una API REST para un sistema bancario básico utilizando Node.js, Express, y principios de Clean Architecture.
+
+### Cuentas Predefinidas
+
+El sistema inicia con dos cuentas predefinidas para pruebas:
+
+1. **ID:** `123`, **Saldo inicial:** $1000
+2. **ID:** `456`, **Saldo inicial:** $500
+
+### Probar la API
+
+Una vez que la aplicación esté en ejecución, puedes probar la API usando los siguientes comandos `curl`:
+
+#### 1. Compilación y Ejecución del Entorno de Desarrollo
+
+Primero, debes compilar y ejecutar la aplicación en un entorno de desarrollo utilizando Docker Compose:
+
+```bash
+test
+docker-compose run --rm test npm test
+
+dev
+docker-compose up --build dev
+
+Curls
+
+Deposito
+curl -X POST http://localhost:3300/deposit \
+-H "Content-Type: application/json" \
+-d '{"accountId": "123", "amount": 100}'
+
+Retiro
+curl -X POST http://localhost:3300/withdraw \
+-H "Content-Type: application/json" \
+-d '{"accountId": "123", "amount": 50}'
+
+Trasferencia
+curl -X POST http://localhost:3300/transfer \
+-H "Content-Type: application/json" \
+-d '{"fromAccountId": "123", "toAccountId": "456", "amount": 75}'
+``` 
+
+
+
